@@ -1,0 +1,35 @@
+name: 部署到Streamlit Cloud
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: 設定Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          
+      - name: 安裝FFmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+          
+      - name: 安裝依賴
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          
+      # Streamlit Community Cloud 會自動從 GitHub 倉庫部署
+      # 這裡只是通知 Streamlit 有新的更新
+      - name: 部署通知
+        run: |
+          echo "應用程式已成功更新！"
+          echo "請前往 Streamlit Community Cloud 查看更新後的應用程式"
+          echo "如果是第一次部署，請在 https://streamlit.io/cloud 連接您的 GitHub Repo" 
