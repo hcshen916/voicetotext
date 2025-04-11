@@ -26,9 +26,12 @@ ENV STREAMLIT_SERVER_PORT=8501
 ENV STREAMLIT_SERVER_ADDRESS=0.0.0.0
 ENV STREAMLIT_SERVER_HEADLESS=true
 ENV STREAMLIT_SERVER_ENABLE_CORS=true
+ENV STREAMLIT_SERVER_MAX_UPLOAD_SIZE=1000
+ENV STREAMLIT_SERVER_TIMEOUT=300
+ENV STREAMLIT_CLIENT_TOOLBAR_MODE=minimal
 
 # 暴露 Streamlit 的預設端口
 EXPOSE 8501
 
 # 啟動 Streamlit 應用，使用指定參數確保可以從容器外訪問
-CMD ["streamlit", "run", "--server.port=8501", "--server.address=0.0.0.0", "--server.headless=true", "--server.enableCORS=true", "app.py"] 
+CMD ["streamlit", "run", "--server.port=8501", "--server.address=0.0.0.0", "--server.headless=true", "--server.enableCORS=true", "--server.maxUploadSize=1000", "--server.timeout=300", "--client.toolbarMode=minimal", "app.py"] 

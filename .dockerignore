@@ -1,0 +1,48 @@
+# 臨時文件和目錄
+temp_segments/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# 版本控制系統文件
+.git
+.gitignore
+.github
+
+# 系統文件
+.DS_Store
+Thumbs.db
+
+# 編輯器和IDE文件
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# 環境文件 (保留 .env.example)
+.env
+.env.local
+
+# 其他
+README.md
+LICENSE
+tests/ 
