@@ -21,8 +21,14 @@ COPY . .
 ENV FFMPEG_PATH=/usr/bin/ffmpeg
 ENV FFPROBE_PATH=/usr/bin/ffprobe
 
+# 設定 Streamlit 環境變數 - 解決 WebSocket 連接問題
+ENV STREAMLIT_SERVER_PORT=8501
+ENV STREAMLIT_SERVER_ADDRESS=0.0.0.0
+ENV STREAMLIT_SERVER_HEADLESS=true
+ENV STREAMLIT_SERVER_ENABLE_CORS=true
+
 # 暴露 Streamlit 的預設端口
 EXPOSE 8501
 
-# 啟動 Streamlit 應用
-CMD ["streamlit", "run", "app.py"] 
+# 啟動 Streamlit 應用，使用指定參數確保可以從容器外訪問
+CMD ["streamlit", "run", "--server.port=8501", "--server.address=0.0.0.0", "--server.headless=true", "--server.enableCORS=true", "app.py"] 
