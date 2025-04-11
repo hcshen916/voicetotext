@@ -100,13 +100,13 @@ st.markdown("### 支援上傳最大檔案大小：1GB")
 st.markdown("注意：處理大型檔案可能需要更長時間，請耐心等待")
 
 @st.cache_data
-def process_audio_segment(segment_data, segment_index, total_segments):
+def process_audio_segment(_segment_data, segment_index, total_segments):
     """處理音頻段落並進行轉錄，使用快取以提高效能"""
     # 使用 try-finally 確保資源釋放
     segment_filename = os.path.join(output_dir, f'segment_{segment_index}.mp3')
     try:
         # 導出段落到臨時檔案
-        segment_data.export(segment_filename, format="mp3")
+        _segment_data.export(segment_filename, format="mp3")
         
         # 使用 OpenAI Whisper API 進行轉錄
         with open(segment_filename, "rb") as audio_file:
